@@ -1,0 +1,146 @@
+/* Version C — Proof Wall */
+
+.vc {
+  --black: #111827;
+  --black-light: #1f2937;
+  --amber: #b45309;
+  --amber-light: #fef3c7;
+  --amber-bg: #fffbeb;
+  --bg: #ffffff;
+  --bg-soft: #f9fafb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+  --border: #e5e7eb;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.vc img { max-width: 100%; height: auto; }
+img.vc-header-logo { height: 38px; width: auto; }
+.vc a { color: inherit; text-decoration: none; }
+
+/* HEADER */
+.vc-header {
+  position: fixed; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.vc-header-inner { max-width: 960px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+.vc-header-logo { height: 24px; }
+.vc-header-right { display: flex; align-items: center; gap: 16px; }
+.vc-header-proof { font-size: 13px; color: var(--text-muted); font-weight: 500; display: none; }
+@media (min-width: 640px) { .vc-header-proof { display: inline; } }
+.vc-header-btn {
+  background: var(--amber); color: #fff; border: none; padding: 8px 20px;
+  border-radius: 2px; font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: background 0.2s;
+}
+.vc-header-btn:hover { background: #92400e; }
+
+/* HERO */
+.vc-hero { padding: 120px 24px 56px; text-align: center; }
+.vc-hero-inner { max-width: 720px; margin: 0 auto; }
+.vc-hero h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(28px, 5vw, 46px); font-weight: 700;
+  color: var(--black); line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 32px;
+}
+.vc-hero-badges { display: flex; justify-content: center; align-items: center; gap: 24px; margin-bottom: 32px; }
+.vc-hero-badges img { height: 36px; }
+.vc-hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.vc-btn-primary {
+  background: var(--amber); color: #fff; border: none; padding: 14px 32px;
+  border-radius: 2px; font-size: 16px; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: background 0.2s;
+}
+.vc-btn-primary:hover { background: #92400e; }
+.vc-btn-outline {
+  background: transparent; color: var(--black); border: 1.5px solid var(--black);
+  padding: 14px 32px; border-radius: 2px; font-size: 16px; font-weight: 600;
+  cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; display: inline-block;
+}
+.vc-btn-outline:hover { background: var(--bg-soft); }
+.vc-hero-micro { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+
+/* REVIEWS */
+.vc-reviews { padding: 48px 0; border-top: 1px solid var(--border); }
+.vc-reviews-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.vc-reviews-label { font-size: 12px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
+.vc-masonry { column-count: 1; column-gap: 20px; }
+@media (min-width: 640px) { .vc-masonry { column-count: 2; } }
+.vc-review-card {
+  break-inside: avoid; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 2px; padding: 24px; margin-bottom: 20px; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.vc-review-card:hover { border-color: var(--amber); box-shadow: 0 2px 12px rgba(180,83,9,0.06); }
+.vc-review-top { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.vc-review-stars { font-size: 13px; font-weight: 800; color: var(--amber); background: var(--amber-light); padding: 2px 8px; border-radius: 2px; }
+.vc-review-verified { font-size: 11px; font-weight: 600; color: var(--amber); text-transform: uppercase; letter-spacing: 1px; }
+.vc-review-text { font-size: 15px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+.vc-review-footer { display: flex; align-items: center; gap: 8px; }
+.vc-review-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.vc-review-source { font-size: 12px; color: var(--text-light); }
+.vc-review-source::before { content: '/ '; }
+
+/* CREDENTIALS */
+.vc-cred-strip { border-top: 1px solid var(--border); padding: 40px 0; }
+.vc-cred-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; display: flex; gap: 20px; align-items: flex-start; }
+.vc-cred-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.vc-cred-headline { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.6; margin-bottom: 8px; }
+.vc-cred-toggle { background: none; border: none; color: var(--amber); font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; }
+.vc-cred-toggle:hover { text-decoration: underline; }
+.vc-cred-details { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.vc-cred-details.open { max-height: 300px; }
+.vc-cred-details ul { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.vc-cred-details li { font-size: 14px; color: var(--text-muted); padding-left: 16px; position: relative; line-height: 1.5; }
+.vc-cred-details li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: var(--amber); border-radius: 1px; }
+
+/* FORM */
+.vc-form-section { border-top: 1px solid var(--border); padding: 56px 24px; }
+.vc-form-wrap { max-width: 440px; margin: 0 auto; text-align: center; }
+.vc-form-wrap h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 28px; font-weight: 700; color: var(--black); margin-bottom: 28px; }
+.vc-field { margin-bottom: 16px; text-align: left; }
+.vc-field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.vc-field input, .vc-field select {
+  width: 100%; padding: 12px 14px; border: 1.5px solid var(--border);
+  border-radius: 2px; font-size: 15px; font-family: 'Inter', sans-serif;
+  color: var(--text); transition: border-color 0.2s; background: var(--bg); appearance: none;
+}
+.vc-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+}
+.vc-field input:focus, .vc-field select:focus { outline: none; border-color: var(--amber); }
+.vc-form-submit {
+  width: 100%; background: var(--amber); color: #fff; padding: 14px;
+  border: none; border-radius: 2px; font-size: 16px; font-weight: 600;
+  cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; margin-top: 4px;
+}
+.vc-form-submit:hover { background: #92400e; }
+.vc-form-note { font-size: 13px; color: var(--text-light); margin-top: 14px; }
+.vc-form-badges { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
+.vc-form-badges img { height: 28px; opacity: 0.5; }
+
+/* FAQ */
+.vc-faq { border-top: 1px solid var(--border); padding: 40px 0; }
+.vc-faq-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.vc-faq-item { border-bottom: 1px solid var(--border); }
+.vc-faq-item:last-child { border-bottom: none; }
+.vc-faq-q {
+  width: 100%; background: none; border: none; padding: 16px 0;
+  font-size: 15px; font-weight: 600; color: var(--text); text-align: left;
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Inter', sans-serif; transition: color 0.2s;
+}
+.vc-faq-q:hover { color: var(--amber); }
+.vc-faq-arrow { font-size: 18px; color: var(--text-light); transition: transform 0.3s; font-weight: 300; }
+.vc-faq-arrow.open { transform: rotate(45deg); }
+.vc-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.vc-faq-a.open { max-height: 250px; padding-bottom: 16px; }
+.vc-faq-a p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+/* FOOTER */
+.vc-footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; }
+.vc-footer p { font-size: 12px; color: var(--text-light); line-height: 1.6; }
