@@ -3,7 +3,7 @@ import './version-a.css'
 
 const IMAGES = {
   logo: 'https://egynaecologist.com/wp-content/uploads/2025/07/logo-final1.png',
-  hero: 'https://egynaecologist.com/wp-content/uploads/2026/03/gen-gynae.jpeg',
+  hero: 'https://egynaecologist.com/wp-content/uploads/2025/04/Gynae-22.png',
   doctor: 'https://egynaecologist.com/wp-content/uploads/2026/03/3X6A8269_resized.jpg',
   cqc: 'https://egynaecologist.com/wp-content/uploads/2026/03/CQC-e1774872482355.png',
   doctify: 'https://egynaecologist.com/wp-content/uploads/2026/03/Doctify.png',
