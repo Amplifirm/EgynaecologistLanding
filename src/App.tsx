@@ -1,5 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef, type RefObject } from 'react'
 import './App.css'
+
+function useReveal(): [RefObject<HTMLDivElement | null>, boolean] {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
+      { threshold: 0.15 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  return [ref, visible]
+}
+
+function Reveal({ children, className = '', stagger = false }: { children: React.ReactNode; className?: string; stagger?: boolean }) {
+  const [ref, visible] = useReveal()
+  return (
+    <div ref={ref} className={`${stagger ? 'anim-children' : 'anim'} ${visible ? 'visible' : ''} ${className}`}>
+      {children}
+    </div>
+  )
+}
 
 const IMG = {
   logo: 'https://egynaecologist.com/wp-content/uploads/2025/07/logo-final1.png',
@@ -22,6 +47,8 @@ const IMG = {
 export default function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const book = () => document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' })
+  const [heroRef, heroVis] = useReveal()
+  const [stripRef, stripVis] = useReveal()
 
   return (
     <>
@@ -40,9 +67,9 @@ export default function App() {
       </header>
 
       {/* 1. Hero */}
-      <section className="hero">
+      <section className="hero" ref={heroRef}>
         <div className="w hero-grid">
-          <div className="hero-text">
+          <div className={`hero-text ${heroVis ? 'visible' : ''}`}>
             <p className="hero-avail">Limited appointments available this week</p>
             <h1>See a private gynaecologist at Harley Street <span>or online</span></h1>
             <p className="hero-sub">We understand that women's health concerns can feel overwhelming. Our specialist consultants provide expert, compassionate care -- so you feel heard, informed, and in control.</p>
@@ -56,15 +83,15 @@ export default function App() {
               <img src={IMG.google} alt="Google 5.0" />
             </div>
           </div>
-          <div className="hero-img-wrap">
+          <div className={`hero-img-wrap ${heroVis ? 'visible' : ''}`}>
             <img src={IMG.hero} alt="eGynaecologist Harley Street clinic" className="hero-img" />
           </div>
         </div>
       </section>
 
       {/* 2. Trust strip — overlaps hero */}
-      <div className="strip">
-        <div className="strip-inner">
+      <div className="strip" ref={stripRef}>
+        <div className={`strip-inner ${stripVis ? 'visible' : ''}`}>
           <div className="strip-item"><strong>5.0</strong> Google & Doctify rating</div>
           <div className="strip-dot" />
           <div className="strip-item"><strong>CQC</strong> Regulated practice</div>
@@ -76,10 +103,10 @@ export default function App() {
       {/* 3. Pricing — EARLY for comparison shoppers */}
       <section className="sec">
         <div className="w center">
-          <p className="tag">Pricing</p>
+          <Reveal><div><p className="tag">Pricing</p>
           <h2>Clear fees, no surprises</h2>
-          <p className="sec-sub">All prices include your consultation and follow-up summary.</p>
-          <div className="prices">
+          <p className="sec-sub">All prices include your consultation and follow-up summary.</p></div></Reveal>
+          <Reveal stagger><div className="prices">
             {[
               { title: 'Remote', price: '250', note: '30-min video consultation', items: ['Pre-assessment questionnaire', 'Self-Collect tests', 'Written summary & plan', 'Digital prescriptions if needed'], pop: false },
               { title: 'In-Person', price: '275', note: 'Harley Street clinic visit', items: ['Everything in Remote, plus:', 'Physical examination', 'On-site diagnostics available', 'Same-day results where possible'], pop: true },
@@ -94,16 +121,16 @@ export default function App() {
                 <button className="btn btn--full" onClick={book}>Book {p.title.toLowerCase()}</button>
               </div>
             ))}
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
       {/* 4. How it works */}
       <section className="sec">
         <div className="w center">
-          <p className="tag">How it works</p>
-          <h2>Three simple steps</h2>
-          <div className="steps-card">
+          <Reveal><div><p className="tag">How it works</p>
+          <h2>Three simple steps</h2></div></Reveal>
+          <Reveal><div className="steps-card">
             <div className="steps">
               {[
                 { n: '1', t: 'Book online', d: 'Choose in-person or remote. No referral needed. Complete a short questionnaire so we can match you with the right consultant.' },
@@ -117,17 +144,17 @@ export default function App() {
                 </div>
               ))}
             </div>
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
       {/* 5. Reviews — proof after price */}
       <section className="sec">
         <div className="w center">
-          <p className="tag">Patient reviews</p>
+          <Reveal><div><p className="tag">Patient reviews</p>
           <h2>Trusted by women across London</h2>
-          <p className="sec-sub">Rated 5.0 from 200+ verified reviews on Doctify and Google</p>
-          <div className="reviews">
+          <p className="sec-sub">Rated 5.0 from 200+ verified reviews on Doctify and Google</p></div></Reveal>
+          <Reveal stagger><div className="reviews">
             {[
               { q: 'I was so impressed with the level of care. The consultant was incredibly knowledgeable and took time to explain everything thoroughly. The whole process was seamless.', name: 'Amirtha D.', src: 'Doctify', img: IMG.amirtha },
               { q: 'The online consultation was incredibly convenient. I was seen within 3 days, the doctor was thorough and compassionate, and I had my treatment plan the same day.', name: 'Anjum A.', src: 'Doctify', img: IMG.anjum },
@@ -142,14 +169,14 @@ export default function App() {
                 </div>
               </div>
             ))}
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
       {/* 6. About / credentials */}
       <section className="sec">
         <div className="w">
-          <div className="about-card"><div className="about-grid">
+          <Reveal><div className="about-card"><div className="about-grid">
             <img src={IMG.doctor} alt="Consultant Gynaecologist" className="about-img" />
             <div className="about-text">
               <p className="tag">Your consultant</p>
@@ -165,16 +192,16 @@ export default function App() {
               </ul>
               <button className="btn" onClick={book}>Book with a specialist</button>
             </div>
-          </div></div>
+          </div></div></Reveal>
         </div>
       </section>
 
       {/* 7. Benefits */}
       <section className="sec">
         <div className="w center">
-          <p className="tag">Why eGynaecologist</p>
-          <h2>What sets us apart</h2>
-          <div className="cards">
+          <Reveal><div><p className="tag">Why eGynaecologist</p>
+          <h2>What sets us apart</h2></div></Reveal>
+          <Reveal stagger><div className="cards">
             {[
               { t: 'Remote & in-person', d: 'Consultations via secure video call or at our Harley Street clinic.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> },
               { t: 'Same-week appointments', d: 'Most patients are seen within 5 working days.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> },
@@ -187,16 +214,16 @@ export default function App() {
                 <p>{c.d}</p>
               </div>
             ))}
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
       {/* 8. FAQ */}
       <section className="sec">
         <div className="w center">
-          <p className="tag">Questions</p>
-          <h2>Frequently asked questions</h2>
-          <div className="faq-card">
+          <Reveal><div><p className="tag">Questions</p>
+          <h2>Frequently asked questions</h2></div></Reveal>
+          <Reveal><div className="faq-card">
             {[
               { q: 'Is an online consultation as thorough as in-person?', a: 'Yes. Our pre-assessment gathers detailed information beforehand so the consultant can focus on diagnosis. If a physical exam is needed, we arrange an in-person follow-up at no rebooking fee.' },
               { q: 'Do I need a GP referral?', a: 'No. You can book directly. If you have a referral letter or previous results, you can upload them during booking.' },
@@ -213,7 +240,7 @@ export default function App() {
                 <div className={`faq-a ${openFaq === i ? 'open' : ''}`}><p>{f.a}</p></div>
               </div>
             ))}
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
