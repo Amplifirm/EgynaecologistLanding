@@ -74,7 +74,7 @@ export default function App() {
       </div>
 
       {/* How it works */}
-      <section className="sec">
+      <section className="sec sec--steps">
         <div className="w center">
           <p className="tag">How it works</p>
           <h2>Three simple steps</h2>
@@ -95,7 +95,7 @@ export default function App() {
       </section>
 
       {/* About / credentials */}
-      <section className="sec sec--soft">
+      <section className="sec sec--muted">
         <div className="w about-grid">
           <img src={IMG.doctor} alt="Consultant Gynaecologist" className="about-img" />
           <div className="about-text">
@@ -116,7 +116,7 @@ export default function App() {
       </section>
 
       {/* Why us */}
-      <section className="sec">
+      <section className="sec sec--muted">
         <div className="w center">
           <p className="tag">Why eGynaecologist</p>
           <h2>What sets us apart</h2>
@@ -137,8 +137,20 @@ export default function App() {
         </div>
       </section>
 
+      {/* CTA break */}
+      <div className="cta-break">
+        <div className="w center">
+          <h2>Ready to take the next step?</h2>
+          <p>Book a consultation today -- no referral needed, appointments available this week.</p>
+          <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' as const }}>
+            <button className="btn" onClick={book}>Book your consultation</button>
+            <a href="tel:+442071234567" className="btn btn--outline">Prefer to call?</a>
+          </div>
+        </div>
+      </div>
+
       {/* Pricing */}
-      <section className="sec sec--soft">
+      <section className="sec">
         <div className="w center">
           <p className="tag">Pricing</p>
           <h2>Clear fees, no surprises</h2>
@@ -163,7 +175,7 @@ export default function App() {
       </section>
 
       {/* Reviews */}
-      <section className="sec">
+      <section className="sec sec--muted">
         <div className="w center">
           <p className="tag">Patient reviews</p>
           <h2>Trusted by women across London</h2>
@@ -187,7 +199,7 @@ export default function App() {
       </section>
 
       {/* FAQ */}
-      <section className="sec sec--soft">
+      <section className="sec">
         <div className="w center">
           <p className="tag">Questions</p>
           <h2>Frequently asked questions</h2>
