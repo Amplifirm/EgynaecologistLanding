@@ -1,17 +1,19 @@
 /* Version A — Classic Conversion Landing Page */
 
 .va {
-  --primary: #2d6a4f;
-  --primary-dark: #1b4332;
-  --primary-light: #52b788;
-  --accent: #d4a017;
-  --accent-light: #f5e6b8;
+  --primary: #6F9500;
+  --primary-dark: #16210E;
+  --primary-light: #379237;
+  --pink: #e45098;
+  --pink-light: #fdf2f7;
+  --accent: #e45098;
+  --accent-light: #fdf2f7;
   --bg: #ffffff;
-  --bg-soft: #f8faf9;
-  --bg-muted: #f0f5f2;
-  --text: #1a1a2e;
-  --text-muted: #555;
-  --text-light: #777;
+  --bg-soft: #f8faf7;
+  --bg-muted: #f0f5ed;
+  --text: #16210E;
+  --text-muted: #656963;
+  --text-light: #888;
   --border: #e0e0e0;
   --radius: 12px;
   --radius-lg: 20px;
@@ -60,7 +62,7 @@ img.va-header-logo { height: 42px; width: auto; }
 /* HERO */
 .va-hero {
   padding: 140px 0 80px;
-  background: linear-gradient(160deg, var(--bg-soft) 0%, #edf5f0 50%, #e8f4ec 100%);
+  background: linear-gradient(160deg, var(--bg-soft) 0%, #f0f5ed 50%, #edf2ea 100%);
   overflow: hidden;
 }
 .va-hero .va-container {
@@ -84,7 +86,7 @@ img.va-header-logo { height: 42px; width: auto; }
   font-size: clamp(32px, 5vw, 48px); color: var(--primary-dark);
   margin-bottom: 16px; letter-spacing: -0.5px;
 }
-.va-hero h1 span { color: var(--primary-light); }
+.va-hero h1 span { color: var(--pink); }
 .va-hero-sub {
   font-size: 18px; color: var(--text-muted); margin-bottom: 32px;
   max-width: 520px; line-height: 1.7;
@@ -146,7 +148,7 @@ img.va-header-logo { height: 42px; width: auto; }
   color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px;
   margin-bottom: 12px; font-family: 'Inter', sans-serif;
 }
-.va-section-title { font-size: clamp(28px, 4vw, 40px); color: var(--primary-dark); margin-bottom: 16px; }
+.va-section-title { font-size: clamp(28px, 4vw, 40px); color: var(--pink); margin-bottom: 16px; }
 .va-section-desc { font-size: 17px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
 .va-text-center { text-align: center; }
 .va-text-center .va-section-desc { margin: 0 auto; }
@@ -161,7 +163,7 @@ img.va-header-logo { height: 42px; width: auto; }
   border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
   font-size: 20px; font-weight: 700; margin-bottom: 16px; font-family: 'Inter', sans-serif;
 }
-.va-step-card h3 { font-size: 20px; color: var(--primary-dark); margin-bottom: 8px; }
+.va-step-card h3 { font-size: 20px; color: var(--pink); margin-bottom: 8px; }
 .va-step-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
 
 /* DOCTOR */
@@ -169,7 +171,7 @@ img.va-header-logo { height: 42px; width: auto; }
 .va-doctor-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; margin-top: 48px; }
 @media (min-width: 768px) { .va-doctor-grid { grid-template-columns: 0.8fr 1.2fr; } }
 .va-doctor-image { width: 100%; max-width: 400px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); object-fit: cover; aspect-ratio: 3/4; }
-.va-doctor-info h3 { font-size: 28px; color: var(--primary-dark); margin-bottom: 4px; }
+.va-doctor-info h3 { font-size: 28px; color: var(--pink); margin-bottom: 4px; }
 .va-doctor-title { font-size: 16px; color: var(--primary); font-weight: 600; margin-bottom: 16px; font-family: 'Inter', sans-serif; }
 .va-doctor-bio { font-size: 16px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
 .va-credentials-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
@@ -183,12 +185,12 @@ img.va-header-logo { height: 42px; width: auto; }
 .va-benefit-card { padding: 28px 24px; border-radius: var(--radius); background: #fff; border: 1px solid var(--border); transition: box-shadow 0.2s, transform 0.2s; }
 .va-benefit-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
 .va-benefit-icon { width: 52px; height: 52px; background: var(--bg-muted); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--primary); }
-.va-benefit-card h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-family: 'Inter', sans-serif; font-weight: 700; }
+.va-benefit-card h4 { font-size: 18px; color: var(--pink); margin-bottom: 8px; font-family: 'Inter', sans-serif; font-weight: 700; }
 .va-benefit-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
 /* CTA BANNER */
 .va-cta-banner { background: var(--bg-muted); padding: 48px 0; text-align: center; }
-.va-cta-banner h2 { font-size: clamp(24px, 3.5vw, 32px); color: var(--primary-dark); margin-bottom: 12px; }
+.va-cta-banner h2 { font-size: clamp(24px, 3.5vw, 32px); color: var(--pink); margin-bottom: 12px; }
 .va-cta-banner p { font-size: 16px; color: var(--text-muted); margin-bottom: 24px; }
 .va-cta-banner-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
 
@@ -202,7 +204,7 @@ img.va-header-logo { height: 42px; width: auto; }
   background: var(--primary); color: #fff; font-size: 12px; font-weight: 700;
   padding: 4px 16px; border-radius: 50px; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
 }
-.va-pricing-card h4 { font-size: 20px; color: var(--primary-dark); margin-bottom: 8px; font-family: 'Inter', sans-serif; font-weight: 700; }
+.va-pricing-card h4 { font-size: 20px; color: var(--pink); margin-bottom: 8px; font-family: 'Inter', sans-serif; font-weight: 700; }
 .va-price { font-size: 36px; font-weight: 800; color: var(--primary); font-family: 'Inter', sans-serif; margin-bottom: 4px; }
 .va-price-note { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
 .va-pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
@@ -238,16 +240,16 @@ img.va-header-logo { height: 42px; width: auto; }
 .va-faq-answer p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
 
 /* FORM */
-.va-form-section { background: linear-gradient(160deg, #142e22 0%, var(--primary-dark) 40%, var(--primary) 100%); color: #fff; }
+.va-form-section { background: linear-gradient(160deg, #0a1207 0%, var(--primary-dark) 40%, #3a5a10 100%); color: #fff; }
 .va-form-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; margin-top: 40px; }
 @media (min-width: 768px) { .va-form-grid { grid-template-columns: 1fr 1fr; } }
-.va-form-left h2 { font-size: clamp(28px, 4vw, 36px); color: #fff; margin-bottom: 16px; }
+.va-form-left h2 { font-size: clamp(28px, 4vw, 36px); color: var(--pink-light); margin-bottom: 16px; }
 .va-form-left p { font-size: 16px; opacity: 0.9; margin-bottom: 24px; line-height: 1.7; }
 .va-form-promise { display: flex; flex-direction: column; gap: 12px; }
 .va-form-promise-item { display: flex; align-items: center; gap: 10px; font-size: 15px; opacity: 0.9; }
 .va-promise-icon { width: 28px; height: 28px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #fff; }
 .va-form-card { background: #fff; border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-lg); }
-.va-form-card h3 { font-size: 22px; color: var(--primary-dark); margin-bottom: 24px; }
+.va-form-card h3 { font-size: 22px; color: var(--pink); margin-bottom: 24px; }
 .va-form-group { margin-bottom: 18px; }
 .va-form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; font-family: 'Inter', sans-serif; }
 .va-form-group input, .va-form-group select {
