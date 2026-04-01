@@ -74,29 +74,32 @@ export default function App() {
       </div>
 
       {/* How it works */}
-      <section className="sec sec--steps">
+      <section className="sec">
         <div className="w center">
           <p className="tag">How it works</p>
           <h2>Three simple steps</h2>
-          <div className="steps">
-            {[
-              { n: '1', t: 'Book online', d: 'Choose in-person or remote. No referral needed. Complete a short questionnaire so we can match you with the right consultant.' },
-              { n: '2', t: 'See your consultant', d: 'Meet a specialist gynaecologist at Harley Street or via secure video link. Focused consultations with clear outcomes.' },
-              { n: '3', t: 'Get your plan', d: 'Receive a personalised treatment plan, investigations and prescriptions if needed, and ongoing support from one care team.' },
-            ].map(s => (
-              <div className="step" key={s.n}>
-                <div className="step-n">{s.n}</div>
-                <h3>{s.t}</h3>
-                <p>{s.d}</p>
+          <div className="steps-card">
+            <div className="steps">
+              {[
+                { n: '1', t: 'Book online', d: 'Choose in-person or remote. No referral needed. Complete a short questionnaire so we can match you with the right consultant.' },
+                { n: '2', t: 'See your consultant', d: 'Meet a specialist gynaecologist at Harley Street or via secure video link. Focused consultations with clear outcomes.' },
+                { n: '3', t: 'Get your plan', d: 'Receive a personalised treatment plan, investigations and prescriptions if needed, and ongoing support from one care team.' },
+              ].map(s => (
+                <div className="step" key={s.n}>
+                  <div className="step-n">{s.n}</div>
+                  <h3>{s.t}</h3>
+                  <p>{s.d}</p>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* About / credentials */}
-      <section className="sec sec--muted">
-        <div className="w about-grid">
+      <section className="sec">
+        <div className="w">
+          <div className="about-card"><div className="about-grid">
           <img src={IMG.doctor} alt="Consultant Gynaecologist" className="about-img" />
           <div className="about-text">
             <p className="tag">Your consultant</p>
@@ -112,11 +115,11 @@ export default function App() {
             </ul>
             <button className="btn" onClick={book}>Book with a specialist</button>
           </div>
-        </div>
+        </div></div></div>
       </section>
 
       {/* Why us */}
-      <section className="sec sec--muted">
+      <section className="sec">
         <div className="w center">
           <p className="tag">Why eGynaecologist</p>
           <h2>What sets us apart</h2>
@@ -175,7 +178,7 @@ export default function App() {
       </section>
 
       {/* Reviews */}
-      <section className="sec sec--muted">
+      <section className="sec">
         <div className="w center">
           <p className="tag">Patient reviews</p>
           <h2>Trusted by women across London</h2>
@@ -203,7 +206,7 @@ export default function App() {
         <div className="w center">
           <p className="tag">Questions</p>
           <h2>Frequently asked questions</h2>
-          <div className="faqs">
+          <div className="faq-card">
             {[
               { q: 'Is an online consultation as thorough as in-person?', a: 'Yes. Our pre-assessment gathers detailed information beforehand so the consultant can focus on diagnosis. If a physical exam is needed, we arrange an in-person follow-up at no rebooking fee.' },
               { q: 'Do I need a GP referral?', a: 'No. You can book directly. If you have a referral letter or previous results, you can upload them during booking.' },
