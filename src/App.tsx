@@ -39,15 +39,15 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero */}
+      {/* 1. Hero */}
       <section className="hero">
         <div className="w hero-grid">
           <div className="hero-text">
-            <p className="hero-avail">Appointments available this week</p>
-            <h1>Private gynaecology care at Harley Street <span>or online</span></h1>
-            <p className="hero-sub">Specialist consultants. Same-week appointments. Clear pricing. No GP referral needed.</p>
+            <p className="hero-avail">Limited appointments available this week</p>
+            <h1>See a private gynaecologist at Harley Street <span>or online</span></h1>
+            <p className="hero-sub">We understand that women's health concerns can feel overwhelming. Our specialist consultants provide expert, compassionate care -- so you feel heard, informed, and in control.</p>
             <div className="hero-btns">
-              <button className="btn" onClick={book}>Book a consultation</button>
+              <button className="btn btn--pink" onClick={book}>Book a consultation</button>
               <a href="tel:+442071234567" className="btn btn--outline">Call us</a>
             </div>
             <div className="hero-trust">
@@ -62,9 +62,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* Trust strip */}
+      {/* 2. Trust strip — overlaps hero */}
       <div className="strip">
-        <div className="w strip-inner">
+        <div className="strip-inner">
           <div className="strip-item"><strong>5.0</strong> Google & Doctify rating</div>
           <div className="strip-dot" />
           <div className="strip-item"><strong>CQC</strong> Regulated practice</div>
@@ -73,86 +73,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* How it works */}
-      <section className="sec">
-        <div className="w center">
-          <p className="tag">How it works</p>
-          <h2>Three simple steps</h2>
-          <div className="steps-card">
-            <div className="steps">
-              {[
-                { n: '1', t: 'Book online', d: 'Choose in-person or remote. No referral needed. Complete a short questionnaire so we can match you with the right consultant.' },
-                { n: '2', t: 'See your consultant', d: 'Meet a specialist gynaecologist at Harley Street or via secure video link. Focused consultations with clear outcomes.' },
-                { n: '3', t: 'Get your plan', d: 'Receive a personalised treatment plan, investigations and prescriptions if needed, and ongoing support from one care team.' },
-              ].map(s => (
-                <div className="step" key={s.n}>
-                  <div className="step-n">{s.n}</div>
-                  <h3>{s.t}</h3>
-                  <p>{s.d}</p>
-              </div>
-            ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About / credentials */}
-      <section className="sec">
-        <div className="w">
-          <div className="about-card"><div className="about-grid">
-          <img src={IMG.doctor} alt="Consultant Gynaecologist" className="about-img" />
-          <div className="about-text">
-            <p className="tag">Your consultant</p>
-            <h2>Specialist-led care you can trust</h2>
-            <p className="about-desc">Every consultation is led by an expert consultant gynaecologist practising evidence-based medicine, with subspecialist expertise across the full range of women's health.</p>
-            <ul className="creds">
-              <li>GMC-registered and revalidated Consultants</li>
-              <li>MRCOG qualified and higher subspecialist training</li>
-              <li>CQC-regulated Harley Street practice</li>
-              <li>On-site consultant led diagnostics</li>
-              <li>Digital-first with AI-powered triaging</li>
-              <li>Recognised by major health insurers</li>
-            </ul>
-            <button className="btn" onClick={book}>Book with a specialist</button>
-          </div>
-        </div></div></div>
-      </section>
-
-      {/* Why us */}
-      <section className="sec">
-        <div className="w center">
-          <p className="tag">Why eGynaecologist</p>
-          <h2>What sets us apart</h2>
-          <div className="cards">
-            {[
-              { t: 'Remote & in-person', d: 'Consultations via secure video call or at our Harley Street clinic.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> },
-              { t: 'Same-week appointments', d: 'Most patients are seen within 5 working days.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> },
-              { t: 'Clear pricing', d: 'Transparent fees. No hidden charges or surprise bills.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> },
-              { t: 'One-stop diagnostics', d: 'Ultrasound, colposcopy, and hysteroscopy on-site.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
-            ].map((c, i) => (
-              <div className="card" key={i}>
-                <div className="card-icon">{c.icon}</div>
-                <h3>{c.t}</h3>
-                <p>{c.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA break */}
-      <div className="cta-break">
-        <div className="w center">
-          <h2>Ready to take the next step?</h2>
-          <p>Book a consultation today -- no referral needed, appointments available this week.</p>
-          <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' as const }}>
-            <button className="btn" onClick={book}>Book your consultation</button>
-            <a href="tel:+442071234567" className="btn btn--outline">Prefer to call?</a>
-          </div>
-        </div>
-      </div>
-
-      {/* Pricing */}
+      {/* 3. Pricing — EARLY for comparison shoppers */}
       <section className="sec">
         <div className="w center">
           <p className="tag">Pricing</p>
@@ -177,11 +98,35 @@ export default function App() {
         </div>
       </section>
 
-      {/* Reviews */}
+      {/* 4. How it works */}
+      <section className="sec">
+        <div className="w center">
+          <p className="tag">How it works</p>
+          <h2>Three simple steps</h2>
+          <div className="steps-card">
+            <div className="steps">
+              {[
+                { n: '1', t: 'Book online', d: 'Choose in-person or remote. No referral needed. Complete a short questionnaire so we can match you with the right consultant.' },
+                { n: '2', t: 'See your consultant', d: 'Meet a specialist gynaecologist at Harley Street or via secure video link. Focused consultations with clear outcomes.' },
+                { n: '3', t: 'Get your plan', d: 'Receive a personalised treatment plan, investigations and prescriptions if needed, and ongoing support from one care team.' },
+              ].map(s => (
+                <div className="step" key={s.n}>
+                  <div className="step-n">{s.n}</div>
+                  <h3>{s.t}</h3>
+                  <p>{s.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Reviews — proof after price */}
       <section className="sec">
         <div className="w center">
           <p className="tag">Patient reviews</p>
           <h2>Trusted by women across London</h2>
+          <p className="sec-sub">Rated 5.0 from 200+ verified reviews on Doctify and Google</p>
           <div className="reviews">
             {[
               { q: 'I was so impressed with the level of care. The consultant was incredibly knowledgeable and took time to explain everything thoroughly. The whole process was seamless.', name: 'Amirtha D.', src: 'Doctify', img: IMG.amirtha },
@@ -201,7 +146,52 @@ export default function App() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* 6. About / credentials */}
+      <section className="sec">
+        <div className="w">
+          <div className="about-card"><div className="about-grid">
+            <img src={IMG.doctor} alt="Consultant Gynaecologist" className="about-img" />
+            <div className="about-text">
+              <p className="tag">Your consultant</p>
+              <h2>Specialist-led care you can trust</h2>
+              <p className="about-desc">Every consultation is led by an expert consultant gynaecologist practising evidence-based medicine, with subspecialist expertise across the full range of women's health.</p>
+              <ul className="creds">
+                <li>GMC-registered and revalidated Consultants</li>
+                <li>MRCOG qualified and higher subspecialist training</li>
+                <li>CQC-regulated Harley Street practice</li>
+                <li>On-site consultant led diagnostics</li>
+                <li>Digital-first with AI-powered triaging</li>
+                <li>Recognised by major health insurers</li>
+              </ul>
+              <button className="btn" onClick={book}>Book with a specialist</button>
+            </div>
+          </div></div>
+        </div>
+      </section>
+
+      {/* 7. Benefits */}
+      <section className="sec">
+        <div className="w center">
+          <p className="tag">Why eGynaecologist</p>
+          <h2>What sets us apart</h2>
+          <div className="cards">
+            {[
+              { t: 'Remote & in-person', d: 'Consultations via secure video call or at our Harley Street clinic.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> },
+              { t: 'Same-week appointments', d: 'Most patients are seen within 5 working days.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> },
+              { t: 'Clear pricing', d: 'Transparent fees. No hidden charges or surprise bills.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> },
+              { t: 'One-stop diagnostics', d: 'Ultrasound, colposcopy, and hysteroscopy on-site.', icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
+            ].map((c, i) => (
+              <div className="card" key={i}>
+                <div className="card-icon">{c.icon}</div>
+                <h3>{c.t}</h3>
+                <p>{c.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FAQ */}
       <section className="sec">
         <div className="w center">
           <p className="tag">Questions</p>
@@ -227,16 +217,17 @@ export default function App() {
         </div>
       </section>
 
-      {/* Form */}
+      {/* 9. Booking form */}
       <section className="sec sec--dark" id="book">
         <div className="w form-grid">
           <div className="form-info">
+            <p className="tag">Get started</p>
             <h2>Book your consultation</h2>
             <p>We will get back to you within 2 hours during working hours.</p>
             <ul className="form-promises">
               <li>Response within 2 hours</li>
               <li>Same-week appointments</li>
-              <li>GDPR protected</li>
+              <li>Your information is strictly confidential</li>
               <li>No hidden fees</li>
             </ul>
             <p className="form-call">Or call: <a href="tel:+442071234567">+44 207 123 4567</a></p>
@@ -246,7 +237,6 @@ export default function App() {
             <form onSubmit={e => e.preventDefault()}>
               <label>Full Name *<input type="text" placeholder="Your full name" required /></label>
               <label>Phone Number *<input type="tel" placeholder="+44 7XXX XXXXXX" required /></label>
-              <label>Email Address *<input type="email" placeholder="your@email.com" required /></label>
               <label>Consultation Type *
                 <select required defaultValue="">
                   <option value="" disabled>Select type</option>
@@ -256,7 +246,10 @@ export default function App() {
                 </select>
               </label>
               <button type="submit" className="btn btn--full btn--pink">Request appointment</button>
-              <p className="form-fine">No payment required now.</p>
+              <p className="form-fine">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display:'inline',verticalAlign:'middle',marginRight:4}}><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                Encrypted and confidential. No payment required now.
+              </p>
             </form>
           </div>
         </div>
@@ -281,8 +274,8 @@ export default function App() {
 
       {/* Mobile sticky */}
       <div className="mob-cta">
-        <button className="btn" onClick={book}>Book now</button>
-        <a href="tel:+442071234567" className="btn btn--outline">Call</a>
+        <button className="btn btn--pink" onClick={book}>Book now</button>
+        <a href="tel:+442071234567" className="btn btn--dark">Call</a>
       </div>
     </>
   )
