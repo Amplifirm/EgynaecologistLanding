@@ -57,7 +57,7 @@ export default function App() {
         <div className="w hdr-inner">
           <img src={IMG.logo} alt="eGynaecologist" className="hdr-logo" />
           <div className="hdr-r">
-            <a href="tel:+442071234567" className="hdr-phone">
+            <a href="tel:+442035187134" className="hdr-phone">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               Call Us
             </a>
@@ -75,7 +75,7 @@ export default function App() {
             <p className="hero-sub">We understand that women's health concerns can feel overwhelming. Our specialist consultants provide expert, compassionate care -- so you feel heard, informed, and in control.</p>
             <div className="hero-btns">
               <button className="btn btn--pink" onClick={book}>Book a consultation</button>
-              <a href="tel:+442071234567" className="btn btn--outline">Call us</a>
+              <a href="tel:+442035187134" className="btn btn--outline">Call us</a>
             </div>
             <div className="hero-trust">
               <img src={IMG.cqc} alt="CQC Regulated" />
@@ -257,7 +257,7 @@ export default function App() {
               <li>Your information is strictly confidential</li>
               <li>No hidden fees</li>
             </ul>
-            <p className="form-call">Or call: <a href="tel:+442071234567">+44 207 123 4567</a></p>
+            <p className="form-call">Or call: <a href="tel:+442035187134">020 3518 7134</a></p>
           </div>
           <div className="form-card">
             <h3>Request an appointment</h3>
@@ -302,7 +302,7 @@ export default function App() {
       {/* Mobile sticky */}
       <div className="mob-cta">
         <button className="btn btn--pink" onClick={book}>Book now</button>
-        <a href="tel:+442071234567" className="btn btn--dark">Call</a>
+        <a href="tel:+442035187134" className="btn btn--dark">Call</a>
       </div>
     </>
   )
