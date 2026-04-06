@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, type RefObject } from 'react'
+import { submitConsultationRequest } from './lib/supabase'
 import './App.css'
 
 function useReveal(): [RefObject<HTMLDivElement | null>, boolean] {
@@ -49,6 +50,26 @@ export default function App() {
   const book = () => document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' })
   const [heroRef, heroVis] = useReveal()
   const [stripRef, stripVis] = useReveal()
+
+  // Booking form state
+  const [form, setForm] = useState({ full_name: '', phone: '', consultation_type: '' })
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (status === 'submitting') return
+    setStatus('submitting')
+    setErrorMsg('')
+    const { error } = await submitConsultationRequest(form)
+    if (error) {
+      setStatus('error')
+      setErrorMsg('Something went wrong. Please try again or call us directly.')
+    } else {
+      setStatus('success')
+      setForm({ full_name: '', phone: '', consultation_type: '' })
+    }
+  }
 
   return (
     <>
@@ -260,24 +281,59 @@ export default function App() {
             <p className="form-call">Or call: <a href="tel:+442035187134">020 3518 7134</a></p>
           </div>
           <div className="form-card">
-            <h3>Request an appointment</h3>
-            <form onSubmit={e => e.preventDefault()}>
-              <label>Full Name *<input type="text" placeholder="Your full name" required /></label>
-              <label>Phone Number *<input type="tel" placeholder="+44 7XXX XXXXXX" required /></label>
-              <label>Consultation Type *
-                <select required defaultValue="">
-                  <option value="" disabled>Select type</option>
-                  <option>Remote Consultation (GBP 250)</option>
-                  <option>In-Person at Harley Street (GBP 275)</option>
-                  <option>Not sure -- help me choose</option>
-                </select>
-              </label>
-              <button type="submit" className="btn btn--full btn--pink">Request appointment</button>
-              <p className="form-fine">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display:'inline',verticalAlign:'middle',marginRight:4}}><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                Encrypted and confidential. No payment required now.
-              </p>
-            </form>
+            {status === 'success' ? (
+              <div className="form-success">
+                <div className="form-success-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <h3>Request received</h3>
+                <p>Thank you. Our team will contact you within 2 hours during working hours to confirm your appointment.</p>
+                <button className="btn btn--outline" onClick={() => setStatus('idle')}>Submit another request</button>
+              </div>
+            ) : (
+              <>
+                <h3>Request an appointment</h3>
+                <form onSubmit={handleSubmit}>
+                  <label>Full Name *
+                    <input
+                      type="text" placeholder="Your full name" required
+                      value={form.full_name}
+                      onChange={e => setForm({ ...form, full_name: e.target.value })}
+                      disabled={status === 'submitting'}
+                    />
+                  </label>
+                  <label>Phone Number *
+                    <input
+                      type="tel" placeholder="+44 7XXX XXXXXX" required
+                      value={form.phone}
+                      onChange={e => setForm({ ...form, phone: e.target.value })}
+                      disabled={status === 'submitting'}
+                    />
+                  </label>
+                  <label>Consultation Type *
+                    <select
+                      required
+                      value={form.consultation_type}
+                      onChange={e => setForm({ ...form, consultation_type: e.target.value })}
+                      disabled={status === 'submitting'}
+                    >
+                      <option value="" disabled>Select type</option>
+                      <option value="Remote Consultation (GBP 250)">Remote Consultation (GBP 250)</option>
+                      <option value="In-Person at Harley Street (GBP 275)">In-Person at Harley Street (GBP 275)</option>
+                      <option value="Not sure -- help me choose">Not sure -- help me choose</option>
+                    </select>
+                  </label>
+                  <button type="submit" className="btn btn--full btn--pink" disabled={status === 'submitting'}>
+                    {status === 'submitting' ? 'Sending...' : 'Request appointment'}
+                  </button>
+                  {status === 'error' && <p className="form-error">{errorMsg}</p>}
+                  <p className="form-fine">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display:'inline',verticalAlign:'middle',marginRight:4}}><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    Encrypted and confidential. No payment required now.
+                  </p>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </section>
